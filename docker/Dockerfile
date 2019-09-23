@@ -23,7 +23,7 @@ RUN conda run -v -n py37 pip install --no-cache-dir \
     pytest-cov \
     mock \
     numpy \
-    pygeoprocessing \
+    retrying \
     rtree \
     scipy \
     setuptools-scm \
@@ -31,8 +31,9 @@ RUN conda run -v -n py37 pip install --no-cache-dir \
     sympy \
     taskgraph && conda clean -a -y
 
-RUN hg clone http://bitbucket.org/natcap/pygeoprocessing
-WORKDIR pygeoprocessing
-RUN hg update develop
-RUN /bin/bash -c "conda run -v -n py37 python3 setup.py install"
+
+RUN hg clone https://richsharp@bitbucket.org/richsharp/pygeoprocessing /usr/local/pygeoprocessing
+WORKDIR /usr/local/pygeoprocessing
+RUN hg pull && hg up 163ad16d3e25
+RUN conda run -v -n py37 python setup.py install
 WORKDIR /workspace
