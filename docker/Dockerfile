@@ -19,6 +19,7 @@ RUN /bin/bash -c "\
 RUN /bin/bash -c "conda run -v -n py37 conda install -c conda-forge gdal=2.4.1"
 RUN conda run -v -n py37 pip install --no-cache-dir \
     cython \
+    ecoshard \
     pytest \
     pytest-cov \
     mock \
