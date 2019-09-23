@@ -35,6 +35,6 @@ RUN conda run -v -n py37 pip install --no-cache-dir \
 
 RUN hg clone https://richsharp@bitbucket.org/richsharp/pygeoprocessing /usr/local/pygeoprocessing
 WORKDIR /usr/local/pygeoprocessing
-RUN hg pull && hg up 1f0e65f879a7
+RUN hg pull && hg up 6d65e38f4e53
 RUN conda run -v -n py37 python setup.py install
 WORKDIR /workspace
