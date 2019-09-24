@@ -1,5 +1,5 @@
 FROM conda/miniconda3
-
+# this is therealspring/execution-env:dev
 # install build essentials & mercurial then delete the cache to minimize
 # the docker size:
 #   build-essential to build cython extensions
