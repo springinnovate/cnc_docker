@@ -39,4 +39,4 @@ WORKDIR /usr/local/invest
 RUN hg pull && hg up f987abed03be && conda run -v -n py37 python setup.py install
 
 WORKDIR /workspace
-CMD /bin/bash -l
+CMD /bin/bash -l -c
