@@ -31,12 +31,12 @@ RUN conda init bash && echo "source activate py37" > ~/.bashrc
 RUN hg clone https://richsharp@bitbucket.org/richsharp/pygeoprocessing /usr/local/pygeoprocessing
 WORKDIR /usr/local/pygeoprocessing
 # this version of pygeoprocessing is the one with the C percentile implementation
-RUN hg pull && hg up 0ce0c93578b5 && python setup.py install
+RUN hg pull && hg up 0ce0c93578b5 && conda run -v -n py37 python setup.py install
 
 RUN hg clone https://richsharp@bitbucket.org/richsharp/invest /usr/local/invest
 WORKDIR /usr/local/invest
 # this version of invest is unstable/lingling-c-factor-exposure
-RUN hg pull && hg up f987abed03be && python setup.py install
+RUN hg pull && hg up f987abed03be && conda run -v -n py37 python setup.py install
 
 WORKDIR /workspace
 CMD /bin/bash
