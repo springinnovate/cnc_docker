@@ -13,7 +13,7 @@ RUN conda create -y --name py37 python=3.7 && conda clean -a -y
 RUN conda run -v -n py37 conda install -c conda-forge gdal=2.4.1
 RUN conda run -v -n py37 pip install --no-cache-dir \
     cython \
-    ecoshard \
+    ecoshard==0.3.1 \
     pytest \
     pytest-cov \
     mock \
