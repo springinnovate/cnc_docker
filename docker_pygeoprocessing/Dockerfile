@@ -4,6 +4,7 @@ USER root
 RUN apt-get update \
 && apt-get install -y \
     build-essential \
+    git \
     libspatialindex-c4v5 \
     mercurial \
 && rm -rf /var/lib/apt/lists/*
@@ -27,5 +28,6 @@ RUN conda run -v -n py37 pip install --no-cache-dir \
     taskgraph && conda clean -a -y
 
 RUN conda init bash && echo "source activate py37" > ~/.bashrc
-
 WORKDIR /usr/local/pygeoprocessing
+RUN echo "python setup.py install && pytest -xv tests" > /usr/local/run_pgp_tests.sh
+ENTRYPOINT /bin/bash -ci /usr/local/run_pgp_tests.sh
