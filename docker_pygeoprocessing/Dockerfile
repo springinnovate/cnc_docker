@@ -29,5 +29,5 @@ RUN conda run -v -n py37 pip install --no-cache-dir \
 
 RUN conda init bash && echo "source activate py37" > ~/.bashrc
 WORKDIR /usr/local/pygeoprocessing
-RUN echo "python setup.py install && pytest -xv tests" > /usr/local/run_pgp_tests.sh
-ENTRYPOINT /bin/bash -ci /usr/local/run_pgp_tests.sh
+RUN echo "python setup.py install && pytest -xv tests" > /usr/local/run_pgp_tests.sh && chmod a+x /usr/local/run_pgp_tests.sh
+ENTRYPOINT /bin/bash -xci /usr/local/run_pgp_tests.sh
